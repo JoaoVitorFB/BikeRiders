@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
 *{
-margin: 0;
+    margin: 0;
 padding: 0;
 font-family: 'Kanit', sans-serif;
 }
 
-header {
-    width: 100%;
-    height: 65px;
-    background-color: #EFEFEF;
-    border-bottom: solid 5px #DC0000;
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
 }
 
 body {
@@ -18,6 +17,65 @@ body {
     justify-content: center;
     flex-direction: column;
 }
+
+/* ----------- HEADER ----------- */
+
+header {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 65px;
+    background-color: #EFEFEF;
+    border-bottom: solid 5px #DC0000;
+    justify-content: center;
+}
+
+#mainHeader{
+    display: flex;
+    flex-direction: row;
+}
+
+.container #divLogoHeader{
+}
+
+.container #imgLogoHeader{
+    width: 164px;
+    height: 56px;
+}
+
+.container #divBotoesHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.container #divBotoesHeader #listaBotoesHeader{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: 640px;
+    justify-content: space-between;
+}
+
+
+#btnHeaderNoticias{
+    display: flex;
+    width: 180px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: #2C2C2C;
+    color: #EFEFEF;
+}
+
+/* ----------- FIM HEADER ----------- */
+
+/* ----------- HOME ----------- */
 
 #mainHome{
     display: flex;
@@ -29,11 +87,6 @@ body {
     background-size: cover;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-}
 
 .container #home {
     width: 100%;
@@ -48,3 +101,5 @@ body {
     font-size: 50px;
     color: #EFEFEF
 }
+
+/* ----------- FIM HOME ----------- */
