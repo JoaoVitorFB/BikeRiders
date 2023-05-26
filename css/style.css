@@ -19,6 +19,12 @@ body {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
 /* ----------- HEADER ----------- */
 
 header {
@@ -55,11 +61,20 @@ header {
     list-style: none;
     display: flex;
     flex-direction: row;
-    font-size: 20px;
-    width: 640px;
+    font-size: 17px;
+    width: 90%;
     justify-content: space-between;
 }
 
+#listaBotoesHeader .btnHeaderPadrao{
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+.btnHeaderPadrao:hover{
+    color: #DC0000;
+    transform: scale(1.2);
+}
 
 #btnHeaderNoticias {
     display: flex;
@@ -70,6 +85,11 @@ header {
     border-radius: 20px;
     background-color: #2C2C2C;
     color: #EFEFEF;
+    cursor: pointer;
+}
+
+#btnHeaderNoticias:hover{
+    transform: scale(1.1);
 }
 
 /* ----------- FIM HEADER ----------- */
@@ -178,12 +198,12 @@ header {
 
 /* ----------- CATEGORIA ----------- */
 
-.container #categoria   {
+.container #categoria {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
-    background-color: #DC0000;
+    margin-top: 100px;
 }
 
 .cardCategoria {
@@ -226,14 +246,5 @@ header {
     justify-content: center;
     text-align: justify;
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------- FIM CATEGORIA ----------- */
