@@ -151,6 +151,7 @@ header {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+    flex-direction: column;
 }
 
 
@@ -179,7 +180,7 @@ header {
     height: 235px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -192,6 +193,13 @@ header {
     color: #DC0000;
     font-weight: bold;
     background-color: #EFEFEF;
+    transition: transform 0.5s;
+}
+
+.botaoAlternativa:hover {
+    color: #ffffff;
+    background-color: #DC0000;
+    transform: scale(1.09);
 }
 
 /* ----------- FIM QUIZ ----------- */
@@ -215,6 +223,12 @@ header {
     align-items: center;
     border-radius: 20px;
     margin-bottom: 68px;
+    transition: transform 0.2s;
+}
+
+.cardCategoria:focus,
+.cardCategoria:hover {
+    transform: scale(1.05);
 }
 
 .tituloCategoria{
@@ -248,3 +262,11 @@ header {
 }
 
 /* ----------- FIM CATEGORIA ----------- */
+
+.perguntas {
+    display: none;
+}
+
+#pergunta0{
+    display: block;
+}

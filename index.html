@@ -16,17 +16,30 @@
             </div>
             <div id="divBotoesHeader">
                 <ul id="listaBotoesHeader">
-                    <a><li class="btnHeaderPadrao">Home</li></a>
-                    <a><li class="btnHeaderPadrao">Moto ideal para você</li></a>
-                    <a><li class="btnHeaderPadrao">Tipos de moto</li></a>
-                    <a><li class="btnHeaderPadrao">Principais marcas</li></a>
-                    <a><li class="btnHeaderPadrao">Sobre nós</li></a>
-                    <a href="/html/noticias.html"><li id="btnHeaderNoticias">Notícias</li></a>
-                </ul>   
+                    <a>
+                        <li class="btnHeaderPadrao">Home</li>
+                    </a>
+                    <a>
+                        <li class="btnHeaderPadrao">Moto ideal para você</li>
+                    </a>
+                    <a>
+                        <li class="btnHeaderPadrao">Tipos de moto</li>
+                    </a>
+                    <a>
+                        <li class="btnHeaderPadrao">Principais marcas</li>
+                    </a>
+                    <a>
+                        <li class="btnHeaderPadrao">Sobre nós</li>
+                    </a>
+                    <a href="html/noticias.html">
+                        <li id="btnHeaderNoticias">Notícias</li>
+                    </a>
+                </ul>
             </div>
         </div>
     </div>
 </header>
+
 <body>
     <div id="mainHome">
         <div class="container">
@@ -43,24 +56,153 @@
                 <p class="txtQuiz">Responda o quiz e descubra o tipo de moto perfeito para você!</p>
             </div>
             <div id="cardQuiz">
-                <div class="perguntaX" id="pergunta1">
+                <div class="perguntas" id="pergunta0">
                     <p class="perguntaQuiz">Você gostaria de uma motocicleta para qual tipo de uso?</p>
                     <div class="alternativas">
-                        <button class="botaoAlternativa" id="p1a" value="pergunta1">Dia a dia</button>
-                        <button class="botaoAlternativa">Passeio</button>
-                        <button class="botaoAlternativa">Ambos</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta1', 'pergunta0')">Dia a dia</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta6', 'pergunta0')">Passeio</button>
                     </div>
                 </div>
+
+                <div class="perguntas" id="pergunta1">
+                    <p class="perguntaQuiz">Você irá andar em perimetro:</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('respostaTrail', 'pergunta1')">Rural</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta2', 'pergunta1')">Urbano</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaTrail', 'pergunta1')">Ambos</button>
+                    </div>
+                </div>
+
+                <div class="perguntas" id="pergunta2">
+                    <p class="perguntaQuiz">Você prefere moto alta ou baixa?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('pergunta3', 'pergunta2')">Baixa</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaTrail', 'pergunta2')">Alta</button>
+                    </div>
+                </div>
+
+                <div class="perguntas" id="pergunta3">
+                    <p class="perguntaQuiz">Você preza por economia ou potência?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('respostaNaked', 'pergunta3')">Potência</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta4', 'pergunta3')">Economia</button>
+                    </div>
+                </div>
+
+                <div class="perguntas" id="pergunta4">
+                    <p class="perguntaQuiz">Você gostaria de uma moto com câmbio automático?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('respostaScooter', 'pergunta4')">Sim</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta5', 'pergunta4')">Não</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta5">
+                    <p class="perguntaQuiz">Você prefere posicionar os pés na frente (sentado) ou do lado (montado)?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('respostaMotoneta', 'pergunta5')">Na
+                            frente</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaStreet', 'pergunta5')">Do lado</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta6">
+                    <p class="perguntaQuiz">Você gostaria de viajar ou andar em circuito fechado (autódromos e outras
+                        pistas)?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('pergunta8', 'pergunta6')">Viajar</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta7', 'pergunta6')">Circuito
+                            Fechado</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta7">
+                    <p class="perguntaQuiz">Você gostaria de andar na terra ou no asfalto?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('respostaOffroad', 'pergunta7')">Terra</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaSpeed', 'pergunta7')">Asfalto</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta8">
+                    <p class="perguntaQuiz">Você gostaria de percorrer trajetos de:</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('pergunta9', 'pergunta8')">Asfalto</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaBigTrail', 'pergunta8')">Terra</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaBigTrail', 'pergunta8')">Ambos</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta9">
+                    <p class="perguntaQuiz">Você prefere conforto ou velocidade?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('pergunta10', 'pergunta9')">Conforto</button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta11', 'pergunta9')">Velocidade</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta10">
+                    <p class="perguntaQuiz">Você gostaria de fazer viagens curtas/médias ou longas distâncias?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa"
+                            onclick="quiz('respostaCustom', 'pergunta10')">Curtas/médias</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaTouring', 'pergunta10')">Longas</button>
+                    </div>
+                </div>
+                <div class="perguntas" id="pergunta11">
+                    <p class="perguntaQuiz">Você gostaria de uma posição de pilotagem mais agressiva ou um pouco mais
+                        neutra?</p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa"
+                            onclick="quiz('respostaSpeed', 'pergunta11')">Agressiva</button>
+                        <button class="botaoAlternativa" onclick="quiz('respostaNaked', 'pergunta11')">Neutra</button>
+                    </div>
+                </div>
+
+
+                <!-- Respostas para todas as categorias de moto -->
+                <div class="perguntas" id="respostaTrail">
+                    <p class="perguntaQuiz">Trail</p>
+                </div>
+                <div class="perguntas" id="respostaStreet">
+                    <p class="perguntaQuiz">Street</p>
+                </div>
+                <div class="perguntas" id="respostaCustom">
+                    <p class="perguntaQuiz">Custom</p>
+                </div>
+                <div class="perguntas" id="respostaNaked">
+                    <p class="perguntaQuiz">Naked</p>
+                </div>
+                <div class="perguntas" id="respostaSpeed">
+                    <p class="perguntaQuiz">Speed</p>
+                </div>
+                <div class="perguntas" id="respostaOffroad">
+                    <p class="perguntaQuiz">Offroad</p>
+                </div>
+                <div class="perguntas" id="respostaMotoneta">
+                    <p class="perguntaQuiz">Motoneta</p>
+                </div>
+                <div class="perguntas" id="respostaScooter">
+                    <p class="perguntaQuiz">Scooter</p>
+                </div>
+                <div class="perguntas" id="respostaTouring">
+                    <p class="perguntaQuiz">Touring</p>
+                </div>
+                <div class="perguntas" id="respostaBigTrail">
+                    <p class="perguntaQuiz">Big Trail</p>
+                </div>
+                <div class="perguntas" id="pergunta">
+                    <p class="perguntaQuiz"></p>
+                    <div class="alternativas">
+                        <button class="botaoAlternativa" onclick="quiz('pergunta', 'pergunta')"></button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta', 'pergunta')"></button>
+                        <button class="botaoAlternativa" onclick="quiz('pergunta', 'pergunta')"></button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
     <div class="container">
-            <div id="categoria">
-                <!-- https://www.motonline.com.br/noticia/conheca-os-11-tipos-de-motos/ -->
+        <div id="categoria">
+            <!-- https://www.motonline.com.br/noticia/conheca-os-11-tipos-de-motos/ -->
             <div class="cardCategoria">
                 <p class="tituloCategoria">Cub ou Motoneta</p>
-                <img class="imgCategoria"
-                    src="https://mobilidade.estadao.com.br/wp-content/webpc-passthru.php?src=https://mobilidade.estadao.com.br/wp-content/uploads/2022/12/shineray-ray50.jpg&nocache=1">
+                <img class="imgCategoria" src="assets/categoriaMotoneta.jpg">
                 <div class="conteudoCategoria">
                     <p>
                         A motoneta, ou cub, se preferir, é um tipo de veículo em que se pilota sentado (como numa
@@ -76,61 +218,91 @@
                 </div>
             </div>
             <div class="cardCategoria">
-                <p class="tituloCategoria">Cub ou Motoneta</p>
-                <img class="imgCategoria"
-                    src="https://mobilidade.estadao.com.br/wp-content/webpc-passthru.php?src=https://mobilidade.estadao.com.br/wp-content/uploads/2022/12/shineray-ray50.jpg&nocache=1">
+                <p class="tituloCategoria">Custom</p>
+                <img class="imgCategoria" src="assets/categoriaCustom.jpg">
                 <div class="conteudoCategoria">
                     <p>
-                        A motoneta, ou cub, se preferir, é um tipo de veículo em que se pilota sentado (como numa
-                        cadeira),
-                        mas não confunda com scooter. Para ajudar a diferenciar, essa categoria deixa os pés expostos,
-                        diferente da scooter que tem sempre um tipo de apoio para os pés.</p>
+                        As motos custom deveriam ser sinônimo de conforto. Essa categoria é estilo e preza pelo bem estar do piloto através do assento baixo e largo, com espuma grossa e confortável. Assim, outro ponto também é a presença do comando avançado que faz com que o piloto fique com as pernas mais esticadas.</p>
+                </div>
+            </div>
+            <div class="cardCategoria">
+                <p class="tituloCategoria">Street</p>
+                <img class="imgCategoria" src="assets/categoriaStreet.jpg">
+                <div class="conteudoCategoria">
                     <p>
-                        Além disso, outra característica desse veículo em relação aos demais tipos de moto é que se
-                        agrega
-                        modelos de baixa cilindrada, geralmente entre 100 cm3 e 125 cm³. A mais famosa das CUB é a Honda
-                        Biz, sucesso de vendas desde 1998.
+                        Chegamos ao tipo mais comum das ruas: a street. Sua principal característica é a pilotagem montado (como em um cavalo) e boa parte da experiência é realizada com os pés, já que o piloto precisa frear e trocar marcha realizando comandos com os pés. Aliás, enquanto em outros mercados outras motos pequenas (como CUB e scooter) se popularizavam, no Brasil as street sempre dominaram a baixa cilindrada, numa verdadeira paixão nacional.</p>
+                </div>
+            </div>
+            <div class="cardCategoria">
+                <p class="tituloCategoria">Naked</p>
+                <img class="imgCategoria" src="assets/categoriaNaked.png">
+                <div class="conteudoCategoria">
+                    <p>
+                        Já na categoria das nakeds, as motos são mais potentes, variando entre média e alta cilindradas. São, basicamente, versões sem carenagem de motos esportivas. Para a Abraciclo (Associação Brasileira dos Fabricantes de Motocicletas, Ciclomotores, Motonetas, Bicicletas e Similares), elas têm 'motor propositalmente exposto e de alto desempenho'.</p>
+                </div>
+            </div>
+            <div class="cardCategoria">
+                <p class="tituloCategoria">Off-road</p>
+                <img class="imgCategoria" src="assets/categoriaOffRoad.jpg">
+                <div class="conteudoCategoria">
+                    <p>
+                        As motos off-road são destinadas ao uso exclusivo em pisos não pavimentados e fora de estrada. Ou seja, não são homologadas para rodar em vias públicas e são comumente encontradas em competições na terra, como Enduro, Motocross e Rally.</p>
+                </div>
+            </div>
+            <div class="cardCategoria">
+                <p class="tituloCategoria">Trail</p>
+                <img class="imgCategoria" src="assets/categoriaTrail.jpg">
+                <div class="conteudoCategoria">
+                    <p>
+                        As motos trail têm rodas de aros grandes, suspensão de curso alongado e DNA aventureiro. Assim, se saem bem tanto em estradas de chão quanto em ruas esburacadas. São motos todo terreno.</p>
+                    <p>
+                        De tamanho limitado, essas motos geralmente oferecem um baixo custo ao dono, tanto em manutenção como em combustível. Dois bons exemplos são a Bros da Honda e a Yamaha Crosser, assim como as XRE 300 e Lander 250.
                     </p>
                 </div>
             </div>
             <div class="cardCategoria">
-                <p class="tituloCategoria">Cub ou Motoneta</p>
-                <img class="imgCategoria"
-                    src="https://mobilidade.estadao.com.br/wp-content/webpc-passthru.php?src=https://mobilidade.estadao.com.br/wp-content/uploads/2022/12/shineray-ray50.jpg&nocache=1">
+                <p class="tituloCategoria">Big Trail</p>
+                <img class="imgCategoria" src="assets/categoriaBigTrail.jpg">
                 <div class="conteudoCategoria">
                     <p>
-                        A motoneta, ou cub, se preferir, é um tipo de veículo em que se pilota sentado (como numa
-                        cadeira),
-                        mas não confunda com scooter. Para ajudar a diferenciar, essa categoria deixa os pés expostos,
-                        diferente da scooter que tem sempre um tipo de apoio para os pés.</p>
+                        Contudo, a big trail já entrega seu potencial pelo nome: uma grande moto aventureira. Assim, como a trail essa categoria oferece a opção de uso dentro e fora da estrada só que em motos de alta cilindrada. Desta forma os modelos são altos, com suspensão robusta e confortável, para-brisa e, atualmente, belos pacotes eletrônicos.</p>
+                </div>
+            </div>
+            <div class="cardCategoria">
+                <p class="tituloCategoria">Scooter</p>
+                <img class="imgCategoria" src="assets/categoriaScooter.jpg">
+                <div class="conteudoCategoria">
                     <p>
-                        Além disso, outra característica desse veículo em relação aos demais tipos de moto é que se
-                        agrega
-                        modelos de baixa cilindrada, geralmente entre 100 cm3 e 125 cm³. A mais famosa das CUB é a Honda
-                        Biz, sucesso de vendas desde 1998.
+                        Essa categoria  podemos distinguir de todas as outras facilmente. Pois, para pilotar as scooters piloto vai sentado como nas Cubs ou motonetas, contudo, os dois pés ficam protegidos dentro da carenagem e nas motocicletas o piloto vai montado e não sentado. Outra característica está no câmbio, já que os scooter são invariavelmente automáticos.</p>
+                </div>
+            </div>
+            <div class="cardCategoria">
+                <p class="tituloCategoria">Speed ou Esportiva</p>
+                <img class="imgCategoria" src="assets/categoriaEsportiva.jpg">
+                <div class="conteudoCategoria">
+                    <p>
+                        Ah, as esportivas! Essa categoria pode ocasionar fortes sintomas de cobiça. Brincadeiras à parte, as motos esportivas possuem como característica a adoção de carenagens que favorecem uma boa aerodinâmica, além do uso de motores de alto desempenho.</p>
+                    <p>
+                        Além disso, a posição de pilotagem dessas motos é adiantada ao guidão fazendo com que o piloto fique mais deitado para conduzir a esportiva - ou seja, nem pense em conforto para o garupa. Quando a esportiva tem média cilindrada (cerca de 600 cm³) é considerada uma supersort, ao passo que as motos de alta cilindrada (1000 cm³) são chamadas de superesportivas - ou superbike.
                     </p>
                 </div>
             </div>
             <div class="cardCategoria">
-                <p class="tituloCategoria">Cub ou Motoneta</p>
-                <img class="imgCategoria"
-                    src="https://mobilidade.estadao.com.br/wp-content/webpc-passthru.php?src=https://mobilidade.estadao.com.br/wp-content/uploads/2022/12/shineray-ray50.jpg&nocache=1">
+                <p class="tituloCategoria">Touring</p>
+                <img class="imgCategoria" src="assets/categoriaTouring.jpg">
                 <div class="conteudoCategoria">
                     <p>
-                        A motoneta, ou cub, se preferir, é um tipo de veículo em que se pilota sentado (como numa
-                        cadeira),
-                        mas não confunda com scooter. Para ajudar a diferenciar, essa categoria deixa os pés expostos,
-                        diferente da scooter que tem sempre um tipo de apoio para os pés.</p>
-                    <p>
-                        Além disso, outra característica desse veículo em relação aos demais tipos de moto é que se
-                        agrega
-                        modelos de baixa cilindrada, geralmente entre 100 cm3 e 125 cm³. A mais famosa das CUB é a Honda
-                        Biz, sucesso de vendas desde 1998.
-                    </p>
+                        Se você é amante de motos e quer aliá-la a longas viagens, a categoria touring é a ideal para você. Essas motos são equipadas com motor potente, tecnologia embarcada de ponta e conforto de carros luxuosos. </p>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
+<footer>
+    <a href="html/login.html">Login</a>
+</footer>
 </html>
+<script src="js/quiz.js"></script>
+<script>
+
+</script>
