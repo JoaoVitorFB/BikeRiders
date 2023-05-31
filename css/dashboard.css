@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    background-color: #303030;
+}
+
+/* ----------- BARRA LATERAL ----------- */
+
+#barraLateral {
+    width: 15%;
+    height: 100vh;
+    border-right: solid 5px #DC0000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+#msgBarra{
+    margin: 50px;;
+    font-size: 18px;
+}
+
+#btnsBarra{
+    margin: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 230px;
+    justify-content: space-between;
+}
+
+#barraLateral .btnBarra {
+    width: 100%;
+    background-color: #868686;
+    height: 70px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnSair{
+    background-color: #DC0000;
+    width: 100%;
+    border: none;
+    height: 70px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnSair:hover,
+#btnSair:focus,
+.btnBarra:hover,
+.btnBarra:focus {
+    cursor: pointer;
+}
+
+#imgLogo{
+    margin-top: 20px;
+    width: 18vh;
+}
+
+/* ----------- FIM BARRA LATERAL ----------- */
+
+/* ----------- CONTEÚDO ----------- */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+}
+
+.container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

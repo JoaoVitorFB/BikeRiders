@@ -1,0 +1,63 @@
+body{
+    background-color: black;
+    background-image: url(../assets/backgroundLogin.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#login {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+.iptsLogin {
+    width: 450px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+#login .container #cardLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    justify-content: space-around;
+}
+
+#login .container #cardLogin h1{
+    font-size: 50px;
+    font-weight: lighter;
+}
+
+#login .container #cardLogin .divIpts{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.divIpts input {
+    font-size: 18px;
+}
+
+#btnLogin {
+    background-color: #DC0000;
+    font-size: 25px;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    transition: 0.5s;
+}
+
+#btnLogin:hover,
+#btnLogin:focus{
+    cursor: pointer;
+    transform: scale(1.1);
+}

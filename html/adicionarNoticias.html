@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/adicionarNoticias.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div id="barraLateral">
+        <img id="imgLogo" src="../assets/logoBikeRiders.png" alt="">
+        <p id="msgBarra">Olá, João Vitor Ferreira</p>
+        <div id="btnsBarra">
+            <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
+            <a class="btnBarra">Editar/excluir notícias</a>
+            <a id="btnSair">Sair</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div id="formAdicionarNoticia">
+                <h1>Publicar notícia:</h1>
+                    <div class="divIpts">
+                        <label for="lblTituloNoticia">Título:</label>
+                        <input class="iptsPublicar" type="text" id="iptTituloNoticia">
+                    </div>
+                    <div class="divIpts">
+                        <label for="lblSubtituloNoticia">Subtítulo:</label>
+                        <textarea class="iptsPublicar" type="text" id="iptSubtituloNoticia" rows="2"></textarea>
+                </div>
+                <div class="divIpts">
+                    <label  for="lblConteudoNoticia">Conteúdo:</label>
+                    <textarea class="iptsPublicar" id="iptConteudo" rows="10"></textarea>
+                </div>
+                <button id="btnPublicar">Publicar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
