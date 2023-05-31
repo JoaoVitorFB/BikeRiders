@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="../js/funcoes.js"></script>
     <title>Dashboard</title>
 </head>
-<body>
+<body onload="validarSessao()">
     <div id="barraLateral">
         <img id="imgLogo" src="../assets/logoBikeRiders.png" alt="">
         <p id="msgBarra">Olá, João Vitor Ferreira</p>
         <div id="btnsBarra">
             <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
             <a class="btnBarra">Editar/excluir notícias</a>
-            <a id="btnSair">Sair</a>
+            <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
+            <button id="btnSair" onclick="limparSessao()">Sair</button>
         </div>
     </div>
     <div class="main">
