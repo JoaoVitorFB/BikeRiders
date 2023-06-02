@@ -1,3 +1,4 @@
+-- Active: 1685655382997@@127.0.0.1@3306@bikeriders
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
 -- Versão do servidor:           8.0.32 - MySQL Community Server - GPL
@@ -30,3 +31,5 @@ INSERT INTO `usuario` (`usr_id`, `usr_nome`, `usr_email`, `usr_senha`) VALUES
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
+SELECT AVG(SELECT COUNT(ntc_id) FROM noticia GROUP BY DATE(ntc_dataHora)) FROM noticia;
