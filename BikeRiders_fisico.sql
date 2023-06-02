@@ -14,11 +14,10 @@ ntc_id INT AUTO_INCREMENT,
 ntc_titulo VARCHAR(100),
 ntc_subtitulo VARCHAR(100),
 ntc_conteudo TEXT,
-ntc_dataHora DATETIME,
+ntc_data DATE,
+ntc_hora TIME,
 fk_usr_id INT,
 PRIMARY KEY (ntc_id)
 );
 
 ALTER TABLE noticia ADD FOREIGN KEY (fk_usr_id) REFERENCES usuario (usr_id);
-
-INSERT INTO usuario VALUES (null, 'João Vitor Ferreira', 'joao@gmail.com', 'joao123');

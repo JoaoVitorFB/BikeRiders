@@ -29,8 +29,16 @@
     </div>
 </body>
 </html>
+<!-- SELECT COUNT(ntc_id) / COUNT(DISTINCT ntc_data) AS noticiasDia
+FROM noticia; -->
+
 <script>
     let proximaAtualizacao;
+    var usrMaxPub = "";
+    var usrMinPub = "";
+    var maxPubUsr = -Infinity;
+    var minPubUsr = +Infinity;
+    var totalPub = 0;
 
     window.onload = obterDadosGrafico();
 
@@ -62,20 +70,22 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Postagens',
+            data: [],
+            fill: false,
+            tension: 0.1
+        }]
+    };
+
     function plotarGrafico(resposta) {
 
-        let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Postagens',
-                data: [],
-                fill: false,
-                tension: 0.1
-            }]
-        };
+        
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -99,7 +109,7 @@
         console.log('Dados:')
         console.log(dados.datasets)
         console.log('----------------------------------------------')
-
+        
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'pie',
@@ -110,9 +120,10 @@
         let myChart = new Chart(
             document.getElementById(`myChartCanvas`),
             config
-        );
-
-        // setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+            );
+            
+            // setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+            metricas();
     }
 
 
@@ -174,5 +185,23 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
+    }
+
+    function metricas(){
+
+        for (i = 0; i < dados.datasets[0].data.length; i++) {
+          if (dados.datasets[0].data[i] > maxPubUsr){
+            maxPubUsr = dados.datasets[0].data[i]
+            usrMaxPub = dados.labels[i]
+          }
+
+          if (dados.datasets[0].data[i] < minPubUsr){
+            minPubUsr = dados.datasets[0].data[i]
+            usrMinPub = dados.labels[i]
+          }
+
+          totalPub = totalPub + dados.datasets[0].data[i];
+
+        }
     }
 </script>
