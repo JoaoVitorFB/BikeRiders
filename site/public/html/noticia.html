@@ -48,11 +48,8 @@
                 <div class="noticia">
                 </div>
             </div>
-            <div class="div-results">
-                <div id="abc" class="feed-container">
-                </div>
-            </div>
         </div>
+    </div>
     </div>
 </body>
 
@@ -102,12 +99,14 @@
                         var tituloNoticia = document.createElement("h1");
                         var subtituloNoticia = document.createElement("h2");
                         var infosNoticia = document.createElement("p");
+                        var imgNoticia = document.createElement("img");
                         var conteudoNoticia = document.createElement("div");
 
 
                         tituloNoticia.innerHTML = publicacao.titulo;
                         subtituloNoticia.innerHTML = publicacao.subtitulo;
                         infosNoticia.innerHTML = `Por: ${publicacao.nomeUsuario} <br> ${publicacao.data} ${publicacao.hora}`;
+                        imgNoticia.className = "imgNoticia"; 
 
                         var conteudoBD = publicacao.conteudo;
                         var conteudoBreak = conteudoBD.replace(/\n/g, "<br>");
@@ -128,7 +127,10 @@
                         tituloNoticia.className = "tituloNoticia";
                         subtituloNoticia.className = "subtituloNoticia";
                         infosNoticia.className = "infosNoticia";
+                        imgNoticia.className = "imgNoticia";
                         conteudoNoticia.className = "conteudoNoticia";
+                        
+                        imgNoticia.setAttribute("src", `${publicacao.imagem}`)
 
                         // divPublicacao.className = "publicacao";
                         // spanTitulo.id = "inputNumero" + publicacao.idAviso;
@@ -150,6 +152,7 @@
                         cabecalhoNoticia.appendChild(tituloNoticia);
                         cabecalhoNoticia.appendChild(subtituloNoticia);
                         cabecalhoNoticia.appendChild(infosNoticia);
+                        noticia.appendChild(imgNoticia);
                         noticia.appendChild(conteudoNoticia);
 
                         // divPublicacao.appendChild(spanID);

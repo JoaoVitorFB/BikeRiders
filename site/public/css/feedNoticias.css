@@ -22,6 +22,7 @@ body{
     flex-direction: column;
     margin-top: 50px;
     border-radius: 30px 10px;
+    justify-content: space-between;
 }
 
 .noticia .imgNoticia{

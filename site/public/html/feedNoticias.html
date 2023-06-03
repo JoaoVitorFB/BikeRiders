@@ -124,25 +124,16 @@
                         // var btnDeletar = document.createElement("button");
 
                         var noticia = document.createElement("div");
-                        var cabecalhoNoticia = document.createElement("div");
+                        var imgNoticia = document.createElement("img");
                         var tituloNoticia = document.createElement("h1");
-                        var subtituloNoticia = document.createElement("h2");
-                        var infosNoticia = document.createElement("p");
-                        var conteudoNoticia = document.createElement("div");
+                        var dataNoticia = document.createElement("p");
                         var btnLerMais = document.createElement("button");
 
 
                         tituloNoticia.innerHTML = publicacao.titulo;
-                        subtituloNoticia.innerHTML = publicacao.subtitulo;
-                        infosNoticia.innerHTML = `Por: ${publicacao.nomeUsuario} <br> ${publicacao.data} ${publicacao.hora}`;
-                        
-                        var conteudoBD = publicacao.conteudo;
-                        var conteudoBreak = conteudoBD.replace(/\n/g, "<br>");
-
-                        
-                        conteudoNoticia.innerHTML = `<p> ${conteudoBreak} </p>`;
-                        
+                        dataNoticia.innerHTML = `Publicação: ${publicacao.data}`;
                         btnLerMais.innerHTML = "Ler Mais";
+                        
 
                         // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
                         // spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
@@ -153,14 +144,13 @@
                         
 
                         noticia.className = "noticia";
-                        cabecalhoNoticia.className = "cabecalhoNoticia";
+                        imgNoticia.className = "imgNoticia"; 
                         tituloNoticia.className = "tituloNoticia";
-                        subtituloNoticia.className = "subtituloNoticia";
-                        infosNoticia.className = "infosNoticia";
-                        conteudoNoticia.className = "conteudoNoticia";
+                        dataNoticia.className = "dataNoticia";
 
-                        btnLerMais.id = "btnLerMais" + publicacao.idNoticia;
+                        btnLerMais.className = "btnLerMais";
                         btnLerMais.setAttribute("onclick", `redirecionarNoticia(${publicacao.idNoticia})`);
+                        imgNoticia.setAttribute("src", `${publicacao.imagem}`)
 
                         // divPublicacao.className = "publicacao";
                         // spanTitulo.id = "inputNumero" + publicacao.idAviso;
@@ -178,11 +168,9 @@
                         // btnDeletar.id = "btnDeletar" + publicacao.idAviso;
                         // btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
 
-                        noticia.appendChild(cabecalhoNoticia);
-                        cabecalhoNoticia.appendChild(tituloNoticia);
-                        cabecalhoNoticia.appendChild(subtituloNoticia);
-                        cabecalhoNoticia.appendChild(infosNoticia);
-                        noticia.appendChild(conteudoNoticia);
+                        noticia.appendChild(imgNoticia);
+                        noticia.appendChild(tituloNoticia);
+                        noticia.appendChild(dataNoticia);
                         noticia.appendChild(btnLerMais);
 
                         // divPublicacao.appendChild(spanID);

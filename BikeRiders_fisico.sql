@@ -16,6 +16,7 @@ ntc_subtitulo VARCHAR(500),
 ntc_conteudo TEXT,
 ntc_data DATE,
 ntc_hora TIME,
+ntc_imagem TEXT,
 fk_usr_id INT,
 PRIMARY KEY (ntc_id)
 );

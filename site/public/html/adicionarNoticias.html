@@ -34,6 +34,10 @@
                     <label  for="lblConteudoNoticia">Conteúdo:</label>
                     <textarea class="iptsPublicar" id="iptConteudo" rows="10"></textarea>
                 </div>
+                <div class="divIpts">
+                    <label for="lblImgNoticia">Link de imagem:</label>
+                    <input class="iptsPublicar" type="text" id="iptImgNoticia">
+                </div>
                 <button id="btnPublicar" onclick="publicar()">Publicar</button>
             </div>
         </div>
@@ -54,7 +58,8 @@
         var corpo = {
             titulo: iptTituloNoticia.value,
             subtitulo: iptSubtituloNoticia.value,
-            conteudo: iptConteudo.value
+            conteudo: iptConteudo.value,
+            imagem: iptImgNoticia.value
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {

@@ -10,6 +10,7 @@ function listar() {
             n.ntc_conteudo AS conteudo,
             DATE(n.ntc_data) AS data,
             n.ntc_hora AS hora,
+            n.ntc_imagem AS imagem,
             n.fk_usr_id,
             u.usr_id AS idUsuario,
             u.usr_nome AS nomeUsuario,
@@ -54,6 +55,7 @@ function listarPorNoticia(idNoticia) {
     n.ntc_conteudo AS conteudo,
     DATE(n.ntc_data) AS data,
     n.ntc_hora AS hora,
+    n.ntc_imagem AS imagem,
     n.fk_usr_id,
     u.usr_id AS idUsuario,
     u.usr_nome AS nomeUsuario,
@@ -68,10 +70,10 @@ function listarPorNoticia(idNoticia) {
     return database.executar(instrucao);
 }
 
-function publicar(titulo, subtitulo, conteudo, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, subtitulo, conteudo, idUsuario);
+function publicar(titulo, subtitulo, conteudo, imagem, idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, subtitulo, conteudo, imagem, idUsuario);
     var instrucao = `
-        INSERT INTO noticia (ntc_titulo, ntc_subtitulo, ntc_conteudo, ntc_data, ntc_hora, fk_usr_id) VALUES ('${titulo}', '${subtitulo}', '${conteudo}', CURDATE(), CURTIME(), ${idUsuario});
+        INSERT INTO noticia (ntc_titulo, ntc_subtitulo, ntc_conteudo, ntc_data, ntc_hora, ntc_imagem, fk_usr_id) VALUES ('${titulo}', '${subtitulo}', '${conteudo}', CURDATE(), CURTIME(), '${imagem}', ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -19,6 +19,7 @@ body{
     justify-content: space-around;
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 .container .noticia .cabecalhoNoticia{
@@ -48,4 +49,10 @@ body{
 
 .container .noticia .conteudoNoticia{
     width: 90%;
+}
+
+.noticia .imgNoticia {
+    width: 70%;
+    margin-bottom: 50px;
+    border-radius: 10px;
 }
