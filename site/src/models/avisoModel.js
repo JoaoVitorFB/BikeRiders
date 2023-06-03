@@ -17,7 +17,7 @@ function listar() {
             u.usr_senha AS senha
         FROM noticia n
             INNER JOIN usuario u
-                ON n.fk_usr_id = u.usr_id;
+                ON n.fk_usr_id = u.usr_id ORDER BY idNoticia;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -44,22 +44,25 @@ function pesquisarDescricao(texto) {
     return database.executar(instrucao);
 }
 
-function listarPorUsuario(idUsuario) {
+function listarPorNoticia(idNoticia) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
     var instrucao = `
-        SELECT 
-            a.id AS idAviso,
-            a.titulo,
-            a.descricao,
-            a.fk_usuario,
-            u.id AS idUsuario,
-            u.nome,
-            u.email,
-            u.senha
-        FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-        WHERE u.id = ${idUsuario};
+    SELECT 
+    n.ntc_id AS idNoticia,
+    n.ntc_titulo AS titulo,
+    n.ntc_subtitulo AS subtitulo,
+    n.ntc_conteudo AS conteudo,
+    DATE(n.ntc_data) AS data,
+    n.ntc_hora AS hora,
+    n.fk_usr_id,
+    u.usr_id AS idUsuario,
+    u.usr_nome AS nomeUsuario,
+    u.usr_email AS email,
+    u.usr_senha AS senha
+    FROM noticia n
+    INNER JOIN usuario u
+    ON n.fk_usr_id = u.usr_id
+    WHERE n.ntc_id = ${idNoticia};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -94,7 +97,7 @@ function deletar(idAviso) {
 
 module.exports = {
     listar,
-    listarPorUsuario,
+    listarPorNoticia,
     pesquisarDescricao,
     publicar,
     editar,

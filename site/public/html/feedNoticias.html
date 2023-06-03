@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/noticias.css">
+    <title>Notícias - BikeRiders</title>
+</head>
+<header>
+    <div class="container">
+        <div id="mainHeader">
+            <div id="divLogoHeader">
+                <img id="imgLogoHeader" src="../assets/logoBikeRidersHorizontal.png">
+            </div>
+            <div id="divBotoesHeader">
+                <ul id="listaBotoesHeader">
+                    <a href="../index.html">
+                        <li class="btnHeaderPadrao">Home</li>
+                    </a>
+                    <a href="../index.html#quiz">
+                        <li class="btnHeaderPadrao">Moto ideal para você</li>
+                    </a>
+                    <a href="../index.html#categoria">
+                        <li class="btnHeaderPadrao">Tipos de moto</li>
+                    </a>
+                    <a href="../index.html">
+                        <li class="btnHeaderPadrao">Principais marcas</li>
+                    </a>
+                    <a href="../index.html">
+                        <li class="btnHeaderPadrao">Sobre nós</li>
+                    </a>
+                    <a href="/html/noticias.html">
+                        <li id="btnHeaderNoticias">Notícias</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<body onload="atualizarFeed()">
+    <div id="noticias">
+        <div class="container">
+            <div id="feedNoticias">
+                <div class="noticia">
+                    <div class="cabecalhoNoticia">
+                        <h1 class="tituloNoticia">Hidrogênio nas motos: 4 grandes japonesas se unem por tecnologia.</h1>
+                        <h2 class="subtituloNoticia">Honda, Yamaha, Kawasaki e Suzuki criam a associação HySE com foco
+                            no
+                            uso de
+                            hidrogênio para pequenos veículos de mobilidade.</h2>
+                        <p class="infosNoticia">Por João Vitor Ferreira<br>
+                            17/05/2023 15:30</p>
+                    </div>
+                    <div class="conteudoNoticia">
+                        <p>Honda, Yamaha, Kawasaki e Suzuki anunciaram nesta quarta-feira, 17 de maio, a união de
+                            esforços para desenvolver motores movidos a hidrogênio para pequenos veículos de mobilidade.
+                            As empresas receberam a aprovação do governo japonês para formarem a associação de pesquisa
+                            tecnológica chamada de HySE.
+
+                            Não é a primeir a vez que as gigantes japonesas trabalham em conjunto na busca de novos
+                            métodos de gerar energia para suas motos, scooters e bicicletas. Vimos a recente criação da
+                            empresa Gachaco para a criação de sistemas de baterias intercambiáveis, que inclusive, já
+                            começou a funcionar no Japão.
+
+
+                            "Para concretizar uma sociedade descarbonizada, é necessária uma estratégia de múltiplos
+                            caminhos para abordar várias questões no setor de mobilidade, em vez de focar em uma única
+                            fonte de energia. Nesse cenário, a pesquisa e o desenvolvimento direcionados à
+                            comercialização de mobilidade com motores movidos a hidrogênio – considerada uma fonte de
+                            energia de última geração – ganham força", disseram as fabricantes, em nota.
+
+                            Como projeto próprio, a Kawasaki revelou em 2022, durante o Eicma, UM protótipo de
+                            motocicleta movida com hidrogênio. A empresa disse que trabalha em motor que utiliza gás
+                            comprimido de hidrogênio. Sua base é plataforma esportiva H2 e vemos na imagem um modelo de
+                            alta performance na categoria sport-touring, ou seja, um caminho diferente do previsto na
+                            HySE, que tem foco em veículos leves.
+                        </p>
+                    </div>
+                    <button>Entrar</button>
+                </div>
+            </div>
+            <div class="div-results">
+                <div id="abc" class="feed-container">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function atualizarFeed() {
+        //aguardar();
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feedNoticias");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feedNoticias");
+                    feed.innerHTML = "";
+
+                    // for (let i = resposta.length; i > 0; i--){
+                    //     alert(i)
+                    // }
+
+                    for (let i = resposta.length; i > 0; i--) {
+                        var publicacao = resposta[i-1];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        // var divPublicacao = document.createElement("div");
+                        // var spanID = document.createElement("span");
+                        // var spanTitulo = document.createElement("span");
+                        // var spanNome = document.createElement("span");
+                        // var divDescricao = document.createElement("div");
+                        // var divButtons = document.createElement("div");
+                        // var btnEditar = document.createElement("button");
+                        // var btnDeletar = document.createElement("button");
+
+                        var noticia = document.createElement("div");
+                        var cabecalhoNoticia = document.createElement("div");
+                        var tituloNoticia = document.createElement("h1");
+                        var subtituloNoticia = document.createElement("h2");
+                        var infosNoticia = document.createElement("p");
+                        var conteudoNoticia = document.createElement("div");
+                        var btnLerMais = document.createElement("button");
+
+
+                        tituloNoticia.innerHTML = publicacao.titulo;
+                        subtituloNoticia.innerHTML = publicacao.subtitulo;
+                        infosNoticia.innerHTML = `Por: ${publicacao.nomeUsuario} <br> ${publicacao.data} ${publicacao.hora}`;
+                        
+                        var conteudoBD = publicacao.conteudo;
+                        var conteudoBreak = conteudoBD.replace(/\n/g, "<br>");
+
+                        
+                        conteudoNoticia.innerHTML = `<p> ${conteudoBreak} </p>`;
+                        
+                        btnLerMais.innerHTML = "Ler Mais";
+
+                        // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        // spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                        // spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        // divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        // btnEditar.innerHTML = "Editar";
+                        // btnDeletar.innerHTML = "Deletar";
+                        
+
+                        noticia.className = "noticia";
+                        cabecalhoNoticia.className = "cabecalhoNoticia";
+                        tituloNoticia.className = "tituloNoticia";
+                        subtituloNoticia.className = "subtituloNoticia";
+                        infosNoticia.className = "infosNoticia";
+                        conteudoNoticia.className = "conteudoNoticia";
+
+                        btnLerMais.id = "btnLerMais" + publicacao.idNoticia;
+                        btnLerMais.setAttribute("onclick", `redirecionarNoticia(${publicacao.idNoticia})`);
+
+                        // divPublicacao.className = "publicacao";
+                        // spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                        // spanNome.className = "publicacao-nome";
+                        // spanTitulo.className = "publicacao-titulo";
+                        // divDescricao.className = "publicacao-descricao";
+
+                        // divButtons.className = "div-buttons"
+
+                        // btnEditar.className = "publicacao-btn-editar"
+                        // btnEditar.id = "btnEditar" + publicacao.idAviso;
+                        // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+                        // btnDeletar.className = "publicacao-btn-editar"
+                        // btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                        // btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+
+                        noticia.appendChild(cabecalhoNoticia);
+                        cabecalhoNoticia.appendChild(tituloNoticia);
+                        cabecalhoNoticia.appendChild(subtituloNoticia);
+                        cabecalhoNoticia.appendChild(infosNoticia);
+                        noticia.appendChild(conteudoNoticia);
+                        noticia.appendChild(btnLerMais);
+
+                        // divPublicacao.appendChild(spanID);
+                        // divPublicacao.appendChild(spanNome);
+                        // divPublicacao.appendChild(spanTitulo);
+                        // divPublicacao.appendChild(divDescricao);
+                        // divPublicacao.appendChild(divButtons);
+                        // divButtons.appendChild(btnEditar);
+                        // divButtons.appendChild(btnDeletar);
+                        // feed.appendChild(divPublicacao);
+
+                        feed.appendChild(noticia);
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function redirecionarNoticia (idNoticia){
+        window.location = `noticia.html?${idNoticia}`
+    }
+</script>
