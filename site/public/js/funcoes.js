@@ -9,11 +9,10 @@ function validarSessao() {
 
     if (email != null && nome != null) {
         // window.alert(`Seja bem-vindo, ${nome}!`);
-        // b_usuario.innerHTML = nome;
-
+        userLogado.innerHTML = nome;
         // finalizarAguardar();
     } else {
-        window.location = "login.html";
+        window.location = "../index.html";
     }
 }
 

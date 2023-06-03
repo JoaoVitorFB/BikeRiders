@@ -11,10 +11,10 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="validarSessao()">
+<body>
     <div id="barraLateral">
-        <img id="imgLogo" src="../assets/logoBikeRiders.png" alt="">
-        <p id="msgBarra">Olá, João Vitor Ferreira</p>
+        <a href="dashboard.html"><img id="imgLogo" src="../assets/logoBikeRiders.png" alt=""></a>
+        <p id="msgBarra">Olá, <span id="userLogado"></span></p>
         <div id="btnsBarra">
             <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
             <a class="btnBarra">Editar/excluir notícias</a>
@@ -23,8 +23,27 @@
         </div>
     </div>
     <div class="main">
-        <div class="graph">
-            <canvas id="myChartCanvas"></canvas>
+        <h1 id="tituloDashboard">Dashboard de notícias</h1>
+        <div id="dashboard">
+            <div class="graph">
+                <canvas id="myChartCanvas"></canvas>
+            </div>
+            <div id="kpis">
+                <div class="kpi">
+                    <h1 class="tituloKpi">Maior número de publicações:</h1>
+                    <h3 class="conteudoKpi" id="retUsrMaxPub"></h3>
+                    <p class="infoKpi">Publicações: <span id="retMaxPubUsr"></span></p>
+                </div>
+                <div class="kpi">
+                    <h1 class="tituloKpi">Menor número de publicações:</h1>
+                    <h3 class="conteudoKpi" id="retUsrMinPub"></h3>
+                    <p class="infoKpi">Publicações: <span id="retMinPubUsr"></span></p>
+                </div>
+                <div class="kpi" id="kpiTotal">
+                    <h1 class="tituloKpi">Total de publicações:</h1>
+                    <h3 class="conteudoKpi" id="retTotalPub"></h3>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -33,6 +52,7 @@
 FROM noticia; -->
 
 <script>
+    validarSessao()
     let proximaAtualizacao;
     var usrMaxPub = "";
     var usrMinPub = "";
@@ -201,6 +221,13 @@ FROM noticia; -->
           }
 
           totalPub = totalPub + dados.datasets[0].data[i];
+
+          retUsrMaxPub.innerHTML = usrMaxPub;
+          retUsrMinPub.innerHTML = usrMinPub;
+          retTotalPub.innerHTML = totalPub;
+          retMaxPubUsr.innerHTML = maxPubUsr;
+          retMinPubUsr.innerHTML = minPubUsr;
+          
 
         }
     }

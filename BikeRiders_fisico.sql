@@ -11,8 +11,8 @@ PRIMARY KEY(usr_id)
 
 CREATE TABLE noticia(
 ntc_id INT AUTO_INCREMENT,
-ntc_titulo VARCHAR(100),
-ntc_subtitulo VARCHAR(100),
+ntc_titulo VARCHAR(250),
+ntc_subtitulo VARCHAR(500),
 ntc_conteudo TEXT,
 ntc_data DATE,
 ntc_hora TIME,

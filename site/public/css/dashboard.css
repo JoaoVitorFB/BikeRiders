@@ -77,13 +77,13 @@ body{
 
 /* ----------- FIM BARRA LATERAL ----------- */
 
-/* ----------- CONTEÚDO ----------- */
 
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 85%;
+    justify-content: center;
 }
 
 .container {
@@ -92,5 +92,77 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+/* ----------- DASHBOARD ----------- */ 
+
+#tituloDashboard{
+    background-color: #D9D9D9;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 130vh;
+}
+
+#dashboard{
+    background-color: #D9D9D9;
+    width: 130vh;
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+.graph{
+    background-color: white;
+    width: 65vh;
+    height: 65vh;
+    border-radius: 10px;
+}
+
+#kpis{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 65vh;
+}
+
+.kpi{
+    background-color: white;
+    width: 380px;
+    height: 130px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.kpi .tituloKpi{
+    color: black;
+    font-size: 18px;
+    margin-top: 5px;
+    font-weight: lighter;
+}
+
+.kpi .conteudoKpi{
+    color: #00195A;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.kpi .infoKpi{
+    font-size: 15px;
+}
+
+#kpiTotal{
+    justify-content: space-around;
+}
+
+#kpiTotal .conteudoKpi{
+    font-size: 50px;
+}
+
+/* ----------- FIM DASHBOARD ----------- */
 
 
