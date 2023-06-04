@@ -40,7 +40,7 @@ body{
 
 #barraLateral .btnBarra {
     width: 100%;
-    background-color: #868686;
+    background-color: #001366;
     height: 70px;
     color: white;
     font-size: 18px;
@@ -165,4 +165,7 @@ body{
 
 /* ----------- FIM DASHBOARD ----------- */
 
-
+#userLogado {
+    color: #001366;
+    font-weight: bold;
+}

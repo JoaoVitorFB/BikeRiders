@@ -1,4 +1,6 @@
 // sessão
+window.onload = validarSessao();
+
 function validarSessao() {
     // aguardar();
 
@@ -7,11 +9,7 @@ function validarSessao() {
 
     // var b_usuario = document.getElementById("b_usuario");
 
-    if (email != null && nome != null) {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
-        userLogado.innerHTML = nome;
-        // finalizarAguardar();
-    } else {
+    if (email == null && nome == null) {
         window.location = "../index.html";
     }
 }

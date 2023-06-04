@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/adicionarNoticias.css">
+    <script src="../js/funcoes.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div id="barraLateral">
+        <a href="dashboard.html"><img id="imgLogo" src="../assets/logoBikeRiders.png" alt=""></a>
+        <p id="msgBarra">Olá, <span id="userLogado"></span></p>
+        <div id="btnsBarra">
+            <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
+            <a href="editarExcluir.html" class="btnBarra">Editar/excluir notícias</a>
+            <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
+            <button id="btnSair" onclick="limparSessao()">Sair</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div id="formAdicionarNoticia">
+                <h1>Editar notícia:</h1>
+                <div class="divIpts">
+                    <label for="lblTituloNoticia">Título:</label>
+                    <input class="iptsPublicar" type="text" id="iptTituloNoticia">
+                </div>
+                <div class="divIpts">
+                    <label for="lblSubtituloNoticia">Subtítulo:</label>
+                    <textarea class="iptsPublicar" type="text" id="iptSubtituloNoticia" rows="2"></textarea>
+                </div>
+                <div class="divIpts">
+                    <label for="lblConteudoNoticia">Conteúdo:</label>
+                    <textarea class="iptsPublicar" id="iptConteudo" rows="10"></textarea>
+                </div>
+                <div class="divIpts">
+                    <label for="lblImgNoticia">Link de imagem:</label>
+                    <input class="iptsPublicar" type="text" id="iptImgNoticia">
+                </div>
+                <button id="btnPublicar" onclick="editar()">Editar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    userLogado.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function editar() {
+        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                titulo: iptTituloNoticia.value,
+                subtitulo: iptSubtituloNoticia.value,
+                conteudo: iptConteudo.value,
+                imagem: iptImgNoticia.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Noticia atualizada com sucesso pelo admin de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "editarExcluir.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    window.onload = trazerDados(sessionStorage.ID_POSTAGEM_EDITANDO)
+
+    function trazerDados(idNoticia) {
+        //aguardar();
+        fetch(`/avisos/listar/${idNoticia}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feedNoticias");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var publicacao = resposta[0];
+
+                    iptTituloNoticia.value = publicacao.titulo;
+                    iptSubtituloNoticia.value = publicacao.subtitulo;
+                    iptConteudo.value = publicacao.conteudo;
+                    iptImgNoticia.value = publicacao.imagem;
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+</script>

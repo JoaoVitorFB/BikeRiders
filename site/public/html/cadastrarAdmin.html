@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/cadastrarAdmin.css">
+    <script src="../js/funcoes.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
     <div id="barraLateral">
-        <img id="imgLogo" src="../assets/logoBikeRiders.png" alt="">
-        <p id="msgBarra">Olá, João Vitor Ferreira</p>
+        <a href="dashboard.html"><img id="imgLogo" src="../assets/logoBikeRiders.png" alt=""></a>
+        <p id="msgBarra">Olá, <span id="userLogado"></span></p>
         <div id="btnsBarra">
             <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
-            <a class="btnBarra">Editar/excluir notícias</a>
-            <a id="btnSair">Sair</a>
+            <a href="editarExcluir.html" class="btnBarra">Editar/excluir notícias</a>
+            <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
+            <button id="btnSair" onclick="limparSessao()">Sair</button>
         </div>
     </div>
     <div class="main">
@@ -41,7 +43,8 @@
 </body>
 </html>
 
-<script>1
+<script>
+    userLogado.innerHTML = sessionStorage.NOME_USUARIO;
     function cadastrar() {
         // aguardar();
 

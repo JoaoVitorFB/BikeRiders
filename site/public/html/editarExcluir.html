@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/editarExcluir.css">
+    <script src="../js/funcoes.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div id="barraLateral">
+        <a href="dashboard.html"><img id="imgLogo" src="../assets/logoBikeRiders.png" alt=""></a>
+        <p id="msgBarra">Olá, <span id="userLogado"></span></p>
+        <div id="btnsBarra">
+            <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
+            <a href="editarExcluir.html" class="btnBarra">Editar/excluir notícias</a>
+            <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
+            <button id="btnSair" onclick="limparSessao()">Sair</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div id="feedNoticias"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    userLogado.innerHTML = sessionStorage.NOME_USUARIO;
+    window.onload = atualizarFeed()
+    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+
+    function editar(idNoticia) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idNoticia;
+        console.log("cliquei em editar - " + idNoticia);
+        window.location = "editarNoticia.html"
+    }
+
+    function deletar(idNoticia) {
+        console.log("Criar função de apagar post escolhido - ID" + idNoticia);
+        fetch(`/avisos/deletar/${idNoticia}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Noticia excluida com sucesso pelo admin de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "editarExcluir.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function atualizarFeed() {
+        //aguardar();
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feedNoticias");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feedNoticias");
+                    feed.innerHTML = "";
+
+                    // for (let i = resposta.length; i > 0; i--){
+                    //     alert(i)
+                    // }
+
+                    for (let i = resposta.length; i > 0; i--) {
+                        var publicacao = resposta[i-1];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        // var divPublicacao = document.createElement("div");
+                        // var spanID = document.createElement("span");
+                        // var spanTitulo = document.createElement("span");
+                        // var spanNome = document.createElement("span");
+                        // var divDescricao = document.createElement("div");
+                        // var divButtons = document.createElement("div");
+                        // var btnEditar = document.createElement("button");
+                        // var btnDeletar = document.createElement("button");
+
+                        var noticia = document.createElement("div");
+                        var imgNoticia = document.createElement("img");
+                        var tituloNoticia = document.createElement("h1");
+                        var nomeUsuarioNoticia = document.createElement("p");
+                        var btnLerMais = document.createElement("button");
+                        var btnEditar = document.createElement("button");
+                        var btnExcluir = document.createElement("button");
+
+
+                        tituloNoticia.innerHTML = publicacao.titulo;
+                        nomeUsuarioNoticia.innerHTML = `Publicação: ${publicacao.nomeUsuario}`;
+                        btnLerMais.innerHTML = "Ler Mais";
+                        btnEditar.innerHTML = "Editar";
+                        btnExcluir.innerHTML = "Excluir";
+                        
+
+                        // spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        // spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                        // spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        // divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        // btnEditar.innerHTML = "Editar";
+                        // btnDeletar.innerHTML = "Deletar";
+                        
+
+                        noticia.className = "noticia";
+                        imgNoticia.className = "imgNoticia"; 
+                        tituloNoticia.className = "tituloNoticia";
+                        nomeUsuarioNoticia.className = "nomeUsuarioNoticia";
+
+                        btnEditar.className = "btnEditar";
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idNoticia})`);
+                        btnExcluir.className = "btnExcluir";
+                        btnExcluir.setAttribute("onclick", `deletar(${publicacao.idNoticia})`);
+                        imgNoticia.setAttribute("src", `${publicacao.imagem}`)
+                        imgNoticia.setAttribute("onclick", `redirecionarNoticia(${publicacao.idNoticia})`);
+                        tituloNoticia.setAttribute("onclick", `redirecionarNoticia(${publicacao.idNoticia})`);
+
+                        // divPublicacao.className = "publicacao";
+                        // spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                        // spanNome.className = "publicacao-nome";
+                        // spanTitulo.className = "publicacao-titulo";
+                        // divDescricao.className = "publicacao-descricao";
+
+                        // divButtons.className = "div-buttons"
+
+                        // btnEditar.className = "publicacao-btn-editar"
+                        // btnEditar.id = "btnEditar" + publicacao.idAviso;
+                        // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+                        // btnDeletar.className = "publicacao-btn-editar"
+                        // btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                        // btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+
+                        noticia.appendChild(imgNoticia);
+                        noticia.appendChild(tituloNoticia);
+                        noticia.appendChild(nomeUsuarioNoticia);
+                        noticia.appendChild(btnEditar);
+                        noticia.appendChild(btnExcluir);
+                        
+
+                        // divPublicacao.appendChild(spanID);
+                        // divPublicacao.appendChild(spanNome);
+                        // divPublicacao.appendChild(spanTitulo);
+                        // divPublicacao.appendChild(divDescricao);
+                        // divPublicacao.appendChild(divButtons);
+                        // divButtons.appendChild(btnEditar);
+                        // divButtons.appendChild(btnDeletar);
+                        // feed.appendChild(divPublicacao);
+
+                        feed.appendChild(noticia);
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+    function redirecionarNoticia (idNoticia){
+        window.location = `noticia.html?${idNoticia}`
+    }
+
+    function testar() {
+        // aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+        var divResultado = document.getElementById("div_feed");
+
+        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+        divResultado.innerHTML = formulario.get("descricao");
+
+        // // finalizarAguardar();
+
+        return false;
+    }
+
+</script>

@@ -17,7 +17,7 @@
         <p id="msgBarra">Olá, <span id="userLogado"></span></p>
         <div id="btnsBarra">
             <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
-            <a class="btnBarra">Editar/excluir notícias</a>
+            <a href="editarExcluir.html" class="btnBarra">Editar/excluir notícias</a>
             <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
             <button id="btnSair" onclick="limparSessao()">Sair</button>
         </div>
@@ -52,7 +52,8 @@
 FROM noticia; -->
 
 <script>
-    validarSessao()
+    userLogado.innerHTML = sessionStorage.NOME_USUARIO;
+    
     let proximaAtualizacao;
     var usrMaxPub = "";
     var usrMinPub = "";
