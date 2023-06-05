@@ -6,6 +6,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 #noticias .container #feedNoticias{
     width: 100%;

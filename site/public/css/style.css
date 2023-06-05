@@ -72,7 +72,7 @@ header {
 }
 
 .btnHeaderPadrao:hover{
-    color: #DC0000;
+    color: #001366;
     transform: scale(1.2);
 }
 
@@ -90,6 +90,8 @@ header {
 
 #btnHeaderNoticias:hover{
     transform: scale(1.1);
+    background-color: #001366;
+
 }
 
 /* ----------- FIM HEADER ----------- */
@@ -206,6 +208,16 @@ header {
 
 /* ----------- CATEGORIA ----------- */
 
+#mainCategoria {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: url(https://www.otempo.com.br/image/contentid/policy:1.2741790:1675723173/asfalto-estrada-jpg.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+}
+
 .container #categoria {
     display: flex;
     flex-wrap: wrap;
@@ -236,7 +248,7 @@ header {
     font-weight: bold;
     text-align: center;
     width: 100%;
-    color: #DC0000;
+    color: #001366;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -270,3 +282,42 @@ header {
 #pergunta0{
     display: block;
 }
+
+/* ----------- FOOTER ----------- */
+
+footer {
+    width: 100%;
+    border-top: solid 5px #DC0000;;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoFooter {
+    width: 200px;
+}
+
+#creditos{
+    font-weight: bold;
+}
+
+#btnLoginFooter{
+    width: 100px;
+    background-color: #001366;
+    border-radius: 50px;
+    text-align: center;
+    margin: 20px;
+    color: white;
+}
+
+#btnLoginFooter:hover{
+    background-color: #001fa8;
+cursor: pointer;
+}
+
+
+
+
+
+/* ----------- FIM FOOTER ----------- */

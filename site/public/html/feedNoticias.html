@@ -13,7 +13,7 @@
     <div class="container">
         <div id="mainHeader">
             <div id="divLogoHeader">
-                <img id="imgLogoHeader" src="../assets/logoBikeRidersHorizontal.png">
+                <a href="../index.html"><img id="imgLogoHeader" src="../assets/logoBikeRidersHorizontal.png"></a>
             </div>
             <div id="divBotoesHeader">
                 <ul id="listaBotoesHeader">
@@ -23,16 +23,13 @@
                     <a href="../index.html#quiz">
                         <li class="btnHeaderPadrao">Moto ideal para você</li>
                     </a>
-                    <a href="../index.html#categoria">
+                    <a href="../index.html#mainCategoria">
                         <li class="btnHeaderPadrao">Tipos de moto</li>
                     </a>
-                    <a href="../index.html">
-                        <li class="btnHeaderPadrao">Principais marcas</li>
-                    </a>
-                    <a href="../index.html">
+                    <a href="../index.html#sobreNos">
                         <li class="btnHeaderPadrao">Sobre nós</li>
                     </a>
-                    <a href="/html/noticias.html">
+                    <a href="feedNoticias.html">
                         <li id="btnHeaderNoticias">Notícias</li>
                     </a>
                 </ul>
@@ -40,7 +37,6 @@
         </div>
     </div>
 </header>
-
 <body onload="atualizarFeed()">
     <div id="noticias">
         <div class="container">
@@ -85,7 +81,11 @@
         </div>
     </div>
 </body>
-
+<footer>
+    <img id="logoFooter" src="../assets/logoBikeRidersHorizontal.png" alt="">
+    <p id="creditos">By João Vitor Ferreira&#169;</p>
+    <a id="btnLoginFooter" href="html/login.html">Login</a>
+</footer>
 </html>
 <script>
     function atualizarFeed() {
