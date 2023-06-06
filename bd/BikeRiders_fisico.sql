@@ -6,6 +6,7 @@ usr_id INT AUTO_INCREMENT,
 usr_nome VARCHAR(50),
 usr_email VARCHAR(65),
 usr_senha VARCHAR(30),
+usr_manager INT,
 PRIMARY KEY(usr_id)
 );
 
@@ -22,3 +23,4 @@ PRIMARY KEY (ntc_id)
 );
 
 ALTER TABLE noticia ADD FOREIGN KEY (fk_usr_id) REFERENCES usuario (usr_id);
+ALTER TABLE usuario ADD FOREIGN KEY (usr_manager) REFERENCES usuario (usr_id);

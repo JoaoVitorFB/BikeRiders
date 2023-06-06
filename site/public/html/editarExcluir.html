@@ -18,7 +18,7 @@
         <div id="btnsBarra">
             <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
             <a href="editarExcluir.html" class="btnBarra">Editar/excluir notícias</a>
-            <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
+            <a href="cadastrarAdmin.html" id="btnCadastrarAdm" class="btnBarra">Cadastrar administrador</a>
             <button id="btnSair" onclick="limparSessao()">Sair</button>
         </div>
     </div>
@@ -31,6 +31,11 @@
 
 </html>
 <script>
+
+     if (sessionStorage.ID_MANAGER != "null"){
+        btnCadastrarAdm.style.display = "none";
+    }
+
     userLogado.innerHTML = sessionStorage.NOME_USUARIO;
     window.onload = atualizarFeed()
     // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;

@@ -99,6 +99,7 @@
                     sessionStorage.EMAIL_USUARIO = json.usr_email;
                     sessionStorage.NOME_USUARIO = json.usr_nome;
                     sessionStorage.ID_USUARIO = json.usr_id;
+                    sessionStorage.ID_MANAGER = json.usr_manager;
 
                     setTimeout(function () {
                         window.location = "dashboard.html";
@@ -108,6 +109,7 @@
 
             } else {
 
+                alert("Email e/ou senha incorreta!")
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {

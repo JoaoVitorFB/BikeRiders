@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <script src="../js/funcoes.js"></script>
     <title>Dashboard</title>
 </head>
+
 <body>
     <div id="barraLateral">
         <a href="dashboard.html"><img id="imgLogo" src="../assets/logoBikeRiders.png" alt=""></a>
@@ -16,7 +18,7 @@
         <div id="btnsBarra">
             <a href="adicionarNoticias.html" class="btnBarra">Adicionar notícias</a>
             <a href="editarExcluir.html" class="btnBarra">Editar/excluir notícias</a>
-            <a href="cadastrarAdmin.html" class="btnBarra">Cadastrar administrador</a>
+            <a href="cadastrarAdmin.html" id="btnCadastrarAdm" class="btnBarra">Cadastrar administrador</a>
             <button id="btnSair" onclick="limparSessao()">Sair</button>
         </div>
     </div>
@@ -24,16 +26,16 @@
         <div class="container">
             <div id="formAdicionarNoticia">
                 <h1>Publicar notícia:</h1>
-                    <div class="divIpts">
-                        <label for="lblTituloNoticia">Título:</label>
-                        <input class="iptsPublicar" type="text" id="iptTituloNoticia">
-                    </div>
-                    <div class="divIpts">
-                        <label for="lblSubtituloNoticia">Subtítulo:</label>
-                        <textarea class="iptsPublicar" type="text" id="iptSubtituloNoticia" rows="2"></textarea>
+                <div class="divIpts">
+                    <label for="lblTituloNoticia">Título:</label>
+                    <input class="iptsPublicar" type="text" id="iptTituloNoticia">
                 </div>
                 <div class="divIpts">
-                    <label  for="lblConteudoNoticia">Conteúdo:</label>
+                    <label for="lblSubtituloNoticia">Subtítulo:</label>
+                    <textarea class="iptsPublicar" type="text" id="iptSubtituloNoticia" rows="2"></textarea>
+                </div>
+                <div class="divIpts">
+                    <label for="lblConteudoNoticia">Conteúdo:</label>
                     <textarea class="iptsPublicar" id="iptConteudo" rows="10"></textarea>
                 </div>
                 <div class="divIpts">
@@ -45,9 +47,14 @@
         </div>
     </div>
 </body>
+
 </html>
 <script>
-    
+
+    if (sessionStorage.ID_MANAGER != "null") {
+        btnCadastrarAdm.style.display = "none";
+    }
+
     userLogado.innerHTML = sessionStorage.NOME_USUARIO;
 
 

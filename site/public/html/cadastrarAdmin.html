@@ -53,6 +53,7 @@
         var nomeVar = iptNome.value;
         var emailVar = iptEmail.value;
         var senhaVar = iptSenha.value;
+        var managerVar = sessionStorage.ID_USUARIO;
         
 
         // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
@@ -77,7 +78,8 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                managerServer: managerVar
             })
         }).then(function (resposta) {
 
